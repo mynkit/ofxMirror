@@ -1,0 +1,13 @@
+bin/ofxMirror.app/
+bin/ofxMirrorDebug.app/
+/obj/
+/.vscode/
+*.DS_Store
+.venv/
+*.png
+*.wav
+.vs/
+*.exe
+*.exp
+*.lib
+*.dll
