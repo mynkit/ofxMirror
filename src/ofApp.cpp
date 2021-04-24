@@ -3,7 +3,6 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(189, 205, 238);
-    ofColor(200, 120, 30);
     
     box.set(5);
     box.setPosition(20, 0, 0);
@@ -39,10 +38,10 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::drawSetup(){
-//    ofColor(200, 120, 30);
-    box.drawWireframe();
-//    ofColor(155);
+    ofSetColor(100, 200, 255);
     sphere.drawWireframe();
+    ofSetColor(50, 55, 255);
+    box.drawWireframe();
 }
 
 //--------------------------------------------------------------
@@ -56,7 +55,7 @@ void ofApp::update(){
                              ));
     
     fbo.begin();
-    ofClear(0);
+    ofClear(184, 200, 233);
     mirrorCam.begin();
     drawSetup();
     mirrorCam.end();
@@ -65,7 +64,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofColor(0);
+    ofSetColor(0);
 
     ofPixels pixels;
     fbo.readToPixels(pixels);
@@ -74,15 +73,14 @@ void ofApp::draw(){
     image.mirror(0, 1);
 
     viewerCam.begin();
-
-    drawSetup();
     
-//    ofColor(50, 0);
+    ofSetColor(184, 200, 233);
     plane.draw();
     image.bind();
-//    ofColor(255);
     plane.draw();
     image.unbind();
+
+    drawSetup();
     
     viewerCam.end();
     
