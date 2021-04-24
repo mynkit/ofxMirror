@@ -9,7 +9,7 @@ void ofApp::setup(){
     sphere.set(10, 10);
     sphere.setPosition(10, 0, -20);
     
-    fbo.allocate(300, 300, GL_RGBA);
+    fbo.allocate(1000, 1000, GL_RGBA);
     
     
     // camera setting
@@ -33,15 +33,16 @@ void ofApp::setup(){
     mirrorCam.setPosition(mirrorCamPositionX, mirrorCamPositionY, mirrorCamPositionZ);
     
     ofEnableNormalizedTexCoords();
-    ofEnableAlphaBlending();
 }
 
 //--------------------------------------------------------------
 void ofApp::drawSetup(){
-    ofSetColor(100, 200, 255);
+    ofPushStyle();
+    ofSetColor(255);
     sphere.drawWireframe();
     ofSetColor(50, 55, 255);
     box.drawWireframe();
+    ofPopStyle();
 }
 
 //--------------------------------------------------------------
@@ -55,7 +56,8 @@ void ofApp::update(){
                              ));
     
     fbo.begin();
-    ofClear(184, 200, 233);
+    ofClear(255, 255, 255, 0);
+    ofBackground(189, 205, 238);
     mirrorCam.begin();
     drawSetup();
     mirrorCam.end();
@@ -74,7 +76,7 @@ void ofApp::draw(){
 
     viewerCam.begin();
     
-    ofSetColor(184, 200, 233);
+    ofSetColor(250);
     plane.draw();
     image.bind();
     plane.draw();
